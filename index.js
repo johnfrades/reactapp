@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const io = require('socket.io')();
+const cloudDB = 'mongodb://<dbuser>:<dbpassword>@ds129315.mlab.com:29315/react';
 
-mongoose.connect('mongodb://localhost/testjuma', () => {
+mongoose.connect(cloudDB, () => {
   console.log('DB Connected')
 })
 
