@@ -15,7 +15,7 @@ class Login extends Component {
 
   login = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/api/login', {
+    axios.post('/api/login', {
       name: this.state.name,
       password: this.state.password
     })
@@ -41,7 +41,7 @@ class Login extends Component {
             <form className="form-inline" onSubmit={this.login}>
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} className="form-control" />
+                <input type="text" value={this.state.name} onChange={e => this.setState({name: e.target.value})} className="form-control" />
               </div>
               <div className="form-group">
                 <label>Password</label>
