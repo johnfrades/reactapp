@@ -12,9 +12,6 @@ import Chat from './components/05_Chat';
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      timestamp: 'no timestamp yet'
-    }
 
   }
   render() {
@@ -22,13 +19,12 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route path='/' exact component={Login} />
+            <Route heyThere='hey' path='/' exact component={Login} />
             <Route path='/post' component={Post} />
             <Route path='/home' component={Home} />
             <Route path='/chat' component={Chat} />
           </div>
         </BrowserRouter>
-
     );
   }
 }

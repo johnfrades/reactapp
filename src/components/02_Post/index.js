@@ -8,30 +8,30 @@ class Post extends Component {
       name: '',
       password: ''
     }
-  }
+  };
 
-  submitData = (e) => {
+  submitData = e => {
     e.preventDefault();
-    axios.post('http://localhost:3001/api/adduser', {
+    axios.post('/api/adduser', {
       name: this.state.name,
       password: this.state.password
     })
     .then(res => {
-    })
-      
-  }
+    
+    })  
+  };
 
-  updateName = (e) => {
+  updateName = e => {
     this.setState({
       name: e.target.value
     })
-  }
+  };
 
-  updatePassword = (e) => {
+  updatePassword = e => {
     this.setState({
       password: e.target.value
     })
-  }
+  };
 
 
 

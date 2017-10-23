@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const io = require('socket.io')();
-const cloudDB = 'mongodb://<dbuser>:<dbpassword>@ds129315.mlab.com:29315/react';
+const cloudDB = 'mongodb://admin:admin@ds129315.mlab.com:29315/react';
 
 mongoose.connect(cloudDB, () => {
   console.log('DB Connected')
@@ -53,20 +53,22 @@ app.get('/api/user', (req, res) => {
 });
 
 app.post('/api/adduser', (req, res) => {
-  console.log(req.body);
+  console.log(req.body)
   User.create({name: req.body.name, password: req.body.password}, (err, newUser) => {
+    console.log(newUser)
     res.json(newUser);
   })
 });
 
 app.post('/api/login', (req, res) => {
+  console.log(req.body)
   User.findOne({
     name: req.body.name,
     password: req.body.password
   }, (err, user) => {
-    console.log(req.body)
-    console.log(user)
     if(user){
+      console.log(req.body)
+      console.log(user)
       res.json({
         success: true,
         info: user

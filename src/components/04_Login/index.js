@@ -1,8 +1,9 @@
+// @flow
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Login extends Component {
-  
+class Login extends Component<{}, State> {
+
   constructor(){
     super();
     this.state = {
@@ -10,19 +11,25 @@ class Login extends Component {
       password: '',
       errorMessage: ''
     }
-    
   }
 
   login = (e) => {
     e.preventDefault();
+    console.log('hey')
     axios.post('/api/login', {
       name: this.state.name,
       password: this.state.password
     })
     .then(res => {
       if(res.data.success){
-        console.log('Success boi')
-        this.props.history.push(`/home`)
+        console.log(this.props)
+        this.props.history.push({
+          pathname: '/chat',
+          state: {
+            name: res.data.info.name,
+            age: 26
+          }
+        })
       } else {
         this.setState({
           errorMessage: res.data.message
